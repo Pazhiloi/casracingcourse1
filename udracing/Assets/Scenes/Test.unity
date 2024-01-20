@@ -514,9 +514,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821007796}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 70
+  m_Drag: 3
+  m_AngularDrag: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -582,6 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theRB: {fileID: 821007801}
   maxSpeed: 30
+  forwardAccel: 8
+  reverseAccel: 4
 --- !u!1 &1049729663
 GameObject:
   m_ObjectHideFlags: 0

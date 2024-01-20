@@ -26,10 +26,10 @@ public class CarController : MonoBehaviour
       speedInput = Input.GetAxis("Vertical") * reverseAccel;
     }
     transform.position = theRB.position;
-  }
+  } 
 
   private void FixedUpdate() {
-    theRB.AddForce(new Vector3(0, 0, speedInput));
+    theRB.AddForce(new Vector3(0, 0, speedInput * 1000f));
   }
 }
  
