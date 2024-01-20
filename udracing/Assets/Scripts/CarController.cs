@@ -45,5 +45,10 @@ public class CarController : MonoBehaviour
   private void FixedUpdate()
   {
     theRB.AddForce(transform.forward * speedInput * 1000f);
+
+    if (theRB.velocity.magnitude > maxSpeed)
+    {
+      theRB.velocity = theRB.velocity.normalized * maxSpeed;
+    }
   }
 }
