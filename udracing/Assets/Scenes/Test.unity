@@ -530,7 +530,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &846859270
@@ -584,6 +584,7 @@ MonoBehaviour:
   maxSpeed: 30
   forwardAccel: 8
   reverseAccel: 4
+  turnStrength: 180
 --- !u!1 &1049729663
 GameObject:
   m_ObjectHideFlags: 0
