@@ -11,25 +11,39 @@ public class CarController : MonoBehaviour
 
   private float speedInput;
 
-  private void Start() {
+  public float turnStrength = 180f;
+  private float turnInput;
+
+  private void Start()
+  {
     theRB.transform.parent = null;
   }
 
-  private void Update() {
+  private void Update()
+  {
     speedInput = 0f;
 
     if (Input.GetAxis("Vertical") > 0)
     {
       speedInput = Input.GetAxis("Vertical") * forwardAccel;
-    }else if (Input.GetAxis("Vertical") < 0)
+    }
+    else if (Input.GetAxis("Vertical") < 0)
     {
       speedInput = Input.GetAxis("Vertical") * reverseAccel;
     }
-    transform.position = theRB.position;
-  } 
 
-  private void FixedUpdate() {
-    theRB.AddForce(new Vector3(0, 0, speedInput * 1000f));
+    turnInput = Input.GetAxis("Horizontal");
+
+    if (Input.GetAxis("Vertical") != 0)
+    {
+      transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, turnInput * turnStrength * Time.deltaTime, 0));
+    }
+
+    transform.position = theRB.position;
+  }
+
+  private void FixedUpdate()
+  {
+    theRB.AddForce(transform.forward * speedInput * 1000f);
   }
 }
- 
