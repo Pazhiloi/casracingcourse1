@@ -15,13 +15,18 @@ public class CarController : MonoBehaviour
   private float turnInput;
 
   private bool grounded;
+
   public Transform groundRayPoint;
   public LayerMask whatIsGround;
   public float groundRayLength = 0.75f;
 
+  private float dragOnGround;
+  public float gravityMod = 10f;
   private void Start()
   {
     theRB.transform.parent = null;
+
+    dragOnGround = theRB.drag;
   }
 
   private void Update()
@@ -60,7 +65,12 @@ public class CarController : MonoBehaviour
 
     if (grounded)
     {
+      theRB.drag  = dragOnGround;
       theRB.AddForce(transform.forward * speedInput * 1000f);
+    }else
+    {
+      theRB.drag  = 0.1f;
+      theRB.AddForce(-Vector3.up * gravityMod * 100f);
     }
 
     if (theRB.velocity.magnitude > maxSpeed)
