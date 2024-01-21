@@ -22,6 +22,10 @@ public class CarController : MonoBehaviour
 
   private float dragOnGround;
   public float gravityMod = 10f;
+
+  public Transform leftFrontWheel, rightFrontWheel;
+  public float maxWheelTurn = 25f;
+
   private void Start()
   {
     theRB.transform.parent = null;
@@ -49,6 +53,11 @@ public class CarController : MonoBehaviour
       transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, turnInput * turnStrength * Time.deltaTime * Mathf.Sign(speedInput) * (theRB.velocity.magnitude / maxSpeed), 0));
     }
 
+
+    leftFrontWheel.localRotation  = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
+    
+    rightFrontWheel.localRotation  = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn), rightFrontWheel.localRotation.eulerAngles.z);
+
     transform.position = theRB.position;
   }
 
@@ -65,7 +74,7 @@ public class CarController : MonoBehaviour
 
       normalTarget = hit.normal;
     }
-    
+
     if (Physics.Raycast(groundRayPoint2.position, -transform.up, out hit, groundRayLength, whatIsGround))
     {
       grounded = true;

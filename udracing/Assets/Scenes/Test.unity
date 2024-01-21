@@ -695,6 +695,9 @@ MonoBehaviour:
     m_Bits: 256
   groundRayLength: 0.75
   gravityMod: 10
+  leftFrontWheel: {fileID: 1760993944}
+  rightFrontWheel: {fileID: 1241784010}
+  maxWheelTurn: 25
 --- !u!4 &1012420049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 81e103468d40b7440b7fe252c1e2d6f2, type: 3}
@@ -794,6 +797,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1241784010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5228416442750742398, guid: 998b4fa2f77cd5b468cdf002442b2959, type: 3}
+  m_PrefabInstance: {fileID: 2088806631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1265453200
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +898,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0769671249457974c84835bed83b242b, type: 3}
   m_PrefabInstance: {fileID: 258318131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1760993944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4699993055987924672, guid: 998b4fa2f77cd5b468cdf002442b2959, type: 3}
+  m_PrefabInstance: {fileID: 2088806631}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1843204900
 PrefabInstance:
