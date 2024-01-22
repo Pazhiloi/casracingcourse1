@@ -26,6 +26,10 @@ public class CarController : MonoBehaviour
   public Transform leftFrontWheel, rightFrontWheel;
   public float maxWheelTurn = 25f;
 
+  public ParticleSystem[] dustTrail;
+  public float maxEmission = 25f, emissionFadeSpeed = 20f;
+  private float emissionRate;
+
   private void Start()
   {
     theRB.transform.parent = null;
@@ -54,11 +58,33 @@ public class CarController : MonoBehaviour
     }
 
 
-    leftFrontWheel.localRotation  = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
-    
-    rightFrontWheel.localRotation  = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn), rightFrontWheel.localRotation.eulerAngles.z);
+    leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
+
+    rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn), rightFrontWheel.localRotation.eulerAngles.z);
 
     transform.position = theRB.position;
+
+
+    // control particle emissions
+
+    emissionRate = Mathf.MoveTowards(emissionRate, 0f, emissionFadeSpeed * Time.deltaTime);
+
+    if (grounded && (Mathf.Abs(turnInput) > 0.5f || (theRB.velocity.magnitude < maxSpeed * 0.5f && theRB.velocity.magnitude != 0)))
+    {
+      emissionRate = maxEmission;
+    }
+
+    if (theRB.velocity.magnitude <= 0.5f)
+    {
+      emissionRate = 0f;
+    }
+
+    for (int i = 0; i < dustTrail.Length; i++)
+    {
+      var emissionModule = dustTrail[i].emission;
+
+      emissionModule.rateOverTime = emissionRate;
+    }
   }
 
   private void FixedUpdate()
@@ -89,11 +115,12 @@ public class CarController : MonoBehaviour
 
     if (grounded)
     {
-      theRB.drag  = dragOnGround;
+      theRB.drag = dragOnGround;
       theRB.AddForce(transform.forward * speedInput * 1000f);
-    }else
+    }
+    else
     {
-      theRB.drag  = 0.1f;
+      theRB.drag = 0.1f;
       theRB.AddForce(-Vector3.up * gravityMod * 100f);
     }
 

@@ -10355,6 +10355,13 @@ MonoBehaviour:
   leftFrontWheel: {fileID: 1760993944}
   rightFrontWheel: {fileID: 1241784010}
   maxWheelTurn: 25
+  dustTrail:
+  - {fileID: 735577526}
+  - {fileID: 895341571}
+  - {fileID: 1677415746}
+  - {fileID: 688552723}
+  maxEmission: 25
+  emissionFadeSpeed: 50
 --- !u!1 &878133137
 GameObject:
   m_ObjectHideFlags: 0
@@ -10385,8 +10392,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 735577527}
-  - {fileID: 1677415744}
   - {fileID: 895341569}
+  - {fileID: 1677415744}
   - {fileID: 688552721}
   m_Father: {fileID: 846859271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
