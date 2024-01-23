@@ -531,7 +531,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616900210}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &616900212
 Camera:
   m_ObjectHideFlags: 0
@@ -10518,6 +10518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846859271}
   - component: {fileID: 846859272}
+  - component: {fileID: 846859273}
   m_Layer: 0
   m_Name: Player Car
   m_TagString: Untagged
@@ -10538,12 +10539,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1979441428}
   - {fileID: 2088806632}
   - {fileID: 821007797}
   - {fileID: 2050369273}
   - {fileID: 2102895849}
   - {fileID: 878133138}
-  - {fileID: 1979441428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &846859272
@@ -10581,6 +10582,14 @@ MonoBehaviour:
   maxEmission: 25
   emissionFadeSpeed: 50
   engineSound: {fileID: 1979441427}
+--- !u!81 &846859273
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846859270}
+  m_Enabled: 1
 --- !u!1 &878133137
 GameObject:
   m_ObjectHideFlags: 0
@@ -15674,7 +15683,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265453200}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1265453202
 Camera:
   m_ObjectHideFlags: 0
@@ -20870,7 +20879,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
