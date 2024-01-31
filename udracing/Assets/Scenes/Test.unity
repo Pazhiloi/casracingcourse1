@@ -10770,7 +10770,7 @@ GameObject:
   - component: {fileID: 742119287}
   m_Layer: 0
   m_Name: Checkpoint (1)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10888,6 +10888,7 @@ GameObject:
   - component: {fileID: 821007798}
   - component: {fileID: 821007801}
   - component: {fileID: 821007802}
+  - component: {fileID: 821007803}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -11023,6 +11024,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 11439885}
   groundLayerNo: 8
+--- !u!114 &821007803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821007796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0a2dfeca9624849b186565054e632c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &846859270
 GameObject:
   m_ObjectHideFlags: 0
@@ -16230,7 +16243,7 @@ GameObject:
   - component: {fileID: 1109345577}
   m_Layer: 0
   m_Name: Checkpoint (5)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16514,7 +16527,7 @@ GameObject:
   - component: {fileID: 1320917445}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21759,7 +21772,7 @@ GameObject:
   - component: {fileID: 1855184738}
   m_Layer: 0
   m_Name: Checkpoint (2)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
