@@ -33,6 +33,9 @@ public class CarController : MonoBehaviour
   public AudioSource engineSound, skidSound;
   public float skidFadeSpeed;
 
+  private int nextCheckpoint;
+  public int currentLap;
+
   private void Start()
   {
     theRB.transform.parent = null;
@@ -152,6 +155,20 @@ public class CarController : MonoBehaviour
     if (grounded && Input.GetAxis("Vertical") != 0)
     {
       transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, turnInput * turnStrength * Time.deltaTime * Mathf.Sign(speedInput) * (theRB.velocity.magnitude / maxSpeed), 0));
+    }
+  }
+
+
+  public void CheckpointHit(int cpNumber){
+    if (cpNumber == nextCheckpoint)
+    {
+      nextCheckpoint++;
+
+      if (nextCheckpoint == RaceManager.instance.allCheckpoints.Length)
+      {
+        nextCheckpoint = 0;
+        currentLap++;
+      }
     }
   }
 }
