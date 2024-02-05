@@ -41,6 +41,8 @@ public class CarController : MonoBehaviour
     theRB.transform.parent = null;
 
     dragOnGround = theRB.drag;
+
+    UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
   }
 
   private void Update()
@@ -167,8 +169,15 @@ public class CarController : MonoBehaviour
       if (nextCheckpoint == RaceManager.instance.allCheckpoints.Length)
       {
         nextCheckpoint = 0;
-        currentLap++;
+        LapCompleted();
       }
     }
+  }
+
+
+  public void LapCompleted(){
+    currentLap++;
+
+    UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
   }
 }
