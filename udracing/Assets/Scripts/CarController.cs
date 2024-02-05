@@ -36,6 +36,8 @@ public class CarController : MonoBehaviour
   private int nextCheckpoint;
   public int currentLap;
 
+  public float lapTime, bestLapTime;
+
   private void Start()
   {
     theRB.transform.parent = null;
@@ -47,6 +49,11 @@ public class CarController : MonoBehaviour
 
   private void Update()
   {
+    lapTime += Time.deltaTime;
+    
+    var ts = System.TimeSpan.FromSeconds(lapTime);
+    UIManager.instance.currentLapTimeText.text = string.Format("{00:00}m:{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
+
     speedInput = 0f;
 
     if (Input.GetAxis("Vertical") > 0)
@@ -177,6 +184,17 @@ public class CarController : MonoBehaviour
 
   public void LapCompleted(){
     currentLap++;
+
+
+    if (lapTime < bestLapTime || bestLapTime == 0)
+    {
+      bestLapTime = lapTime;
+    }
+
+    lapTime = 0f;
+
+    var ts = System.TimeSpan.FromSeconds(bestLapTime);
+    UIManager.instance.bestLapTimeText.text = string.Format("{00:00}m:{1:00}.{2:000}s", ts.Minutes, ts.Seconds, ts.Milliseconds);
 
     UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
   }
