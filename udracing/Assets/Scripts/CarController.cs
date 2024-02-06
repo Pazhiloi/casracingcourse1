@@ -42,7 +42,7 @@ public class CarController : MonoBehaviour
 
   public int currentTarget;
   private Vector3 targetPoint;
-  public float aiAccelerateSpeed = 1f, aiTurnSpeed = 0.8f, aiReachPointRange = 5f, aiPointVariance = 3f;
+  public float aiAccelerateSpeed = 1f, aiTurnSpeed = 0.8f, aiReachPointRange = 5f, aiPointVariance = 3f, aiMaxTurn = 15f;
   private float aiSpeedInput;
 
   private void Start()
@@ -89,7 +89,9 @@ public class CarController : MonoBehaviour
       //   transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, turnInput * turnStrength * Time.deltaTime * Mathf.Sign(speedInput) * (theRB.velocity.magnitude / maxSpeed), 0));
       // }
 
-    }else{
+    }
+    else
+    {
       targetPoint.y = transform.position.y;
 
       if (Vector3.Distance(transform.position, targetPoint) < aiReachPointRange)
@@ -103,6 +105,30 @@ public class CarController : MonoBehaviour
         targetPoint = RaceManager.instance.allCheckpoints[currentTarget].transform.position;
         RandomiseAITarget();
       }
+
+      Vector3 targetDir = targetPoint - transform.position;
+      float angle = Vector3.Angle(targetDir, transform.forward);
+
+      Vector3 localPos = transform.InverseTransformPoint(targetPoint);
+
+      if (localPos.x < 0f)
+      {
+        angle = -angle;
+      }
+
+      turnInput = Mathf.Clamp(angle / aiMaxTurn, -1f, 1f);
+
+      if (Mathf.Abs(angle) < aiMaxTurn)
+      {
+        aiSpeedInput = Mathf.MoveTowards(aiSpeedInput, 1f, aiAccelerateSpeed);
+      }
+      else
+      {
+        aiSpeedInput = Mathf.MoveTowards(aiSpeedInput, aiTurnSpeed, aiAccelerateSpeed);
+      }
+
+
+      speedInput = aiSpeedInput + forwardAccel;
     }
 
 
@@ -239,7 +265,8 @@ public class CarController : MonoBehaviour
     }
   }
 
-  public void RandomiseAITarget(){
-    targetPoint += new Vector3(Random.Range(-aiPointVariance, aiPointVariance), 0f,  Random.Range(-aiPointVariance, aiPointVariance));
+  public void RandomiseAITarget()
+  {
+    targetPoint += new Vector3(Random.Range(-aiPointVariance, aiPointVariance), 0f, Random.Range(-aiPointVariance, aiPointVariance));
   }
 }

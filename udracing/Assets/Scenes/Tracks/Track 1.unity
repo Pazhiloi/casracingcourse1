@@ -730,6 +730,10 @@ PrefabInstance:
       propertyPath: isAI
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5549289805131495819, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -1190,6 +1194,10 @@ PrefabInstance:
     - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: isAI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5549289805131495819, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -3117,6 +3125,10 @@ PrefabInstance:
     - target: {fileID: 1484725779500806477, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8169543168559758003, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Name
@@ -5435,6 +5447,10 @@ PrefabInstance:
     - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: isAI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5549289805131495819, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -8112,6 +8128,10 @@ PrefabInstance:
       propertyPath: isAI
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5549289805131495819, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -8812,6 +8832,10 @@ PrefabInstance:
     - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: isAI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1545420952515128468, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
+      propertyPath: aiMaxTurn
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5549289805131495819, guid: a02dc05fa70af1d4dae6a7ccc8bee67a, type: 3}
       propertyPath: m_Materials.Array.data[1]
