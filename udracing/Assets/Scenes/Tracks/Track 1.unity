@@ -12683,6 +12683,10 @@ MonoBehaviour:
   - {fileID: 688198075}
   playerPosition: 0
   timeBetweenPosCheck: 0.2
+  aiDefaultSpeed: 30
+  playerDefaultSpeed: 30
+  rubberBandSpeedMod: 3.5
+  rubBandAccel: 0.5
 --- !u!4 &1946762351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a5dda521e4327cf4f838ecf5ebe6c467, type: 3}

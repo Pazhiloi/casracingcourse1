@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RaceManager : MonoBehaviour
 {
   public static RaceManager instance;
   public Checkpoint[] allCheckpoints;
-
   public int totalLaps;
 
   public CarController playerCar;
   public List<CarController> allAICars = new List<CarController>();
   public int playerPosition;
   public float timeBetweenPosCheck = 0.2f;
+  public float aiDefaultSpeed = 30f, playerDefaultSpeed = 30f, rubberBandSpeedMod = 3.5f, rubBandAccel = 0.5f;
   private float posChkCounter;
 
   private void Awake()
@@ -67,5 +68,22 @@ public class RaceManager : MonoBehaviour
       UIManager.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
     }
 
+    if (playerPosition == 1)
+    {
+      foreach (CarController aiCar in allAICars)
+      {
+        aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed + rubberBandSpeedMod, rubBandAccel * Time.deltaTime);
+      }
+
+      playerCar.maxSpeed = Mathf.MoveTowards(playerCar.maxSpeed, playerDefaultSpeed - rubberBandSpeedMod, rubBandAccel * Time.deltaTime);
+    }else{
+
+      foreach (CarController aiCar in allAICars)
+      {
+        aiCar.maxSpeed = Mathf.MoveTowards(aiCar.maxSpeed, aiDefaultSpeed - (rubberBandSpeedMod * ((float)playerPosition / ((float)allAICars.Count + 1))), rubBandAccel * Time.deltaTime);
+      }
+
+      playerCar.maxSpeed = Mathf.MoveTowards(playerCar.maxSpeed, playerDefaultSpeed + (rubberBandSpeedMod * ((float)playerPosition / ((float)allAICars.Count + 1))), rubBandAccel * Time.deltaTime);
+    }
   }
 }
