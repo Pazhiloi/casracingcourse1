@@ -5,18 +5,64 @@ using UnityEngine;
 public class RaceManager : MonoBehaviour
 {
   public static RaceManager instance;
-    public Checkpoint[] allCheckpoints;
+  public Checkpoint[] allCheckpoints;
 
-    public int totalLaps;
+  public int totalLaps;
 
-    private void Awake() {
-      instance = this;
+  public CarController playerCar;
+  public List<CarController> allAICars = new List<CarController>();
+  public int playerPosition;
+  public float timeBetweenPosCheck = 0.2f;
+  private float posChkCounter;
+
+  private void Awake()
+  {
+    instance = this;
+  }
+
+  private void Start()
+  {
+    for (int i = 0; i < allCheckpoints.Length; i++)
+    {
+      allCheckpoints[i].cpNumber = i;
     }
+  }
 
-    private void Start() {
-      for (int i = 0; i < allCheckpoints.Length; i++)
+  private void Update()
+  {
+
+    posChkCounter -= Time.deltaTime;
+    if (posChkCounter <= 0)
+    {
+
+      playerPosition = 1;
+      foreach (CarController aiCar in allAICars)
       {
-        allCheckpoints[i].cpNumber = i;
+        if (aiCar.currentLap > playerCar.currentLap)
+        {
+          playerPosition++;
+        }
+        else if (aiCar.currentLap == playerCar.currentLap)
+        {
+          if (aiCar.nextCheckpoint > playerCar.nextCheckpoint)
+          {
+            playerPosition++;
+          }
+          else if (aiCar.nextCheckpoint == playerCar.nextCheckpoint)
+          {
+            var aiDistance = Vector3.Distance(aiCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position);
+            var playerCarDistance = Vector3.Distance(playerCar.transform.position, allCheckpoints[aiCar.nextCheckpoint].transform.position);
+
+            if (aiDistance < playerCarDistance)
+            {
+              playerPosition++;
+            }
+          }
+        }
       }
+
+      posChkCounter = timeBetweenPosCheck;
     }
+
+  }
 }
