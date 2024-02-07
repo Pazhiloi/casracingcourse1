@@ -26,6 +26,7 @@ public class RaceManager : MonoBehaviour
     {
       allCheckpoints[i].cpNumber = i;
     }
+
   }
 
   private void Update()
@@ -62,6 +63,8 @@ public class RaceManager : MonoBehaviour
       }
 
       posChkCounter = timeBetweenPosCheck;
+
+      UIManager.instance.positionText.text = playerPosition + "/" + (allAICars.Count + 1);
     }
 
   }
