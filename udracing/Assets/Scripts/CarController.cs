@@ -43,7 +43,7 @@ public class CarController : MonoBehaviour
   public int currentTarget;
   private Vector3 targetPoint;
   public float aiAccelerateSpeed = 1f, aiTurnSpeed = 0.8f, aiReachPointRange = 5f, aiPointVariance = 3f, aiMaxTurn = 15f;
-  private float aiSpeedInput;
+  private float aiSpeedInput, aiSpeedMod;
 
   private void Start()
   {
@@ -55,6 +55,8 @@ public class CarController : MonoBehaviour
     {
       targetPoint = RaceManager.instance.allCheckpoints[currentTarget].transform.position;
       RandomiseAITarget();
+
+      aiSpeedMod = Random.Range(0.8f, 1.1f);
     }
 
     UIManager.instance.lapCounterText.text = currentLap + "/" + RaceManager.instance.totalLaps;
@@ -121,7 +123,7 @@ public class CarController : MonoBehaviour
       }
 
 
-      speedInput = aiSpeedInput + forwardAccel;
+      speedInput = aiSpeedInput * forwardAccel * aiSpeedMod;
     }
 
 
