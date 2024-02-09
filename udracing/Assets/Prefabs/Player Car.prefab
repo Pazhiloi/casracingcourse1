@@ -19998,7 +19998,18 @@ MonoBehaviour:
   engineSound: {fileID: 8209253623792208747}
   skidSound: {fileID: 3635062089446381272}
   skidFadeSpeed: 2
+  nextCheckpoint: 0
   currentLap: 1
+  lapTime: 0
+  bestLapTime: 0
+  resetCooldown: 2
+  isAI: 0
+  currentTarget: 0
+  aiAccelerateSpeed: 1
+  aiTurnSpeed: 0.8
+  aiReachPointRange: 5
+  aiPointVariance: 3
+  aiMaxTurn: 15
 --- !u!81 &6176083616302137457
 AudioListener:
   m_ObjectHideFlags: 0
